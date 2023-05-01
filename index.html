@@ -1,63 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Join My Profile</title>
-    <style>
-      body {
-        background-color: #f2f2f2;
-        font-family: Arial, sans-serif;
-      }
-      .loader {
-        border: 8px solid #ccc;
-        border-top: 8px solid #0a81ab;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 2s linear infinite;
-        margin: 0 auto;
-        margin-top: 50px;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      .logo {
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        display: block;
-        margin: 0 auto;
-        margin-top: 50px;
-        border: 8px solid #0a81ab;
-        animation: fadein 2s linear;
-      }
-      @keyframes fadein {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-    </style>
-  </head>
+    <head>
+        <title>Youtube Redirector</title>
+        <style>
+          body {
+            background-image: url("https://bit.ly/40LngEk");
+            background-repeat: repeat;
+            background-position: center center;
+            background-size: 100%;
+            animation: slide-background 20s linear infinite;
+          }
+          h1 {
+      color: #bcff05; /* set the title color */
+      text-align: center;
+      margin-top: 50px;
+      font-size: 70px;
+    }
+    label {
+      color: #00f7ff; /* set the title color */
+      text-align: center;
+      margin-top: 50px;
+      font-size: 30px;
+    }
+          label {
+            display: block;
+            margin-bottom: 10px;
+          }
+          input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #2702f7;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            
+          }
+          input[type="submit"] {
+            background-color: #1db122;
+            color: white;
+            padding: 15px 100px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-inline-start: auto;
+           
+          }
+          input[type="submit"]:hover {
+            background-color: #45a049;
+          }
+          #result {
+            font-size: 16px;
+            margin-top: 20px;
+          }
+        </style>
+      </head>
+      
   <body>
-    <h1>Redirecting, please wait...</h1>
-    <div class="loader"></div>
-    <img class="logo" src="https://ggle.io/5dLm" alt="Logo" />
+    <h1>YouTube Redirector</h1>
+    <form onsubmit="generateRedirectUrl(); return false;">
+      <label for="long-url">Enter a URL:</label>
+      <input type="text" id="long-url" name="long-url" required>
+      <input type="submit" value="Genarete URL">
+    </form>
+    <p id="result"></p>
     <script>
-      const delayRedirect = (url, delay) => {
-        setTimeout(() => {
-          window.location.href = url;
-        }, delay);
-      };
-      const url = "https://shortco.netlify.app";
-      const delay = 1000; // 1 seconds
-      delayRedirect(url, delay);
+      function generateRedirectUrl() {
+        const longUrl = document.getElementById("long-url").value;
+        const event = "comments";
+        const redirToken = "QUFFLUhqbUhCeHBxbFVDVHlpS2k0RUJNZ3lDWnNXQTBlQXxBQ3Jtc0tsTWRndl8xMkY5VzQ1TXRPTkVSMXZFb2NqR1JUam5adzVNTFBhMk41ZnZkQ2tDS1dRMGxpd2VtMlZuLXdlNHJFTUtwVmM2dmZtTjJSdVNHb0pTemMwSFhwSk1GNGJSUUsxcXF5Nm9ud3h4M0Z2YVVjbw&q";
+        const redirectUrl = "https://www.youtube.com/redirect?q=" + encodeURIComponent(longUrl) + "&event=" + event + "&redir_token=" + redirToken + "&html_redirect=1";
+        document.getElementById("result").innerHTML = "Your YouTube redirect URL is: <a href='" + redirectUrl + "' target='_blank'>" + redirectUrl + "</a>";
+        document.getElementById("copy-btn").style.display = "block";
+        document.getElementById("copy-btn").setAttribute("data-clipboard-text", redirectUrl);
+      }
+
+      // Add copy to clipboard functionality
+      const copyBtn = document.getElementById("copy-btn");
+      copyBtn.addEventListener("click", function() {
+        const clipboardText = copyBtn.getAttribute("data-clipboard-text");
+        navigator.clipboard.writeText(clipboardText).then(function() {
+          alert("Copied to clipboard!");
+        }, function() {
+          alert("Error: Could not copy to clipboard.");
+        });
+      });
     </script>
   </body>
 </html>
