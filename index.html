@@ -79,7 +79,7 @@
       function generateRedirectUrl() {
         const longUrl = document.getElementById("long-url").value;
         const event = "comments";
-        const redirToken = "QUFFLUhqbGxQN1U4bWZqTFZNYk5TTkNRVjE0Qy1DWmI5Z3xBQ3Jtc0ttOFpTNHh2bG5sZzFZWkZRckh2SnMwdlhxQzR2aDE1M0FFM0ZBRTZOVzdXSUFDRW0tWDdqWm16Z3Y0VzFZN1pmc0J1N0gwY1pOd0NBY0pWZm1RT1BaTnhfcm1aeEZUV01LNUJ2ZGFWdDBEeHJJUVRzbw&q";
+        const redirToken = "QUFFLUhqbXAwQmZxTmlYd25VNWs0MjRCazdNY2o5SDhIUXxBQ3Jtc0ttd2ZQZzBSTDkycURXWGtvcDF1dk1tTFZFZTc5eEYwbDdPcXY4dWVnNXc2SmhxMEtfZ0NVNTZ0OFd3VHRGNWY5amU5Q3pMUkx5cjFxM1NWT1VPTnd6N1dDM0FHOFBxeGM1dldVX0pZT0x6ZjRwalQ2VQ&q";
         const redirectUrl = "https://www.youtube.com/redirect?q=" + encodeURIComponent(longUrl) + "&event=" + event + "&redir_token=" + redirToken + "&html_redirect=1";
         document.getElementById("result").innerHTML = "Your YouTube redirect URL is: <a href='" + redirectUrl + "' target='_blank'>" + redirectUrl + "</a>";
         document.getElementById("copy-btn").style.display = "block";
